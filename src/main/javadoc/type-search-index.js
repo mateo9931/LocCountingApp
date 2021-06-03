@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"edu.escuelaing.arsw.ASE.app","l":"CountLines"},{"p":"edu.escuelaing.arsw.ASE.app","l":"CountLinesTest"},{"p":"edu.escuelaing.arsw.ASE.app","l":"ReadFiles"}]
