@@ -24,7 +24,7 @@ public class CountLinesTest extends TestCase
      */
     public void testphy() throws IOException {
         int resultadoEsperado=11;
-        File ruta = new File("/home/matqui/Documentos/prueba.txt");
+        File ruta = new File("./src/main/resources/prueba.txt");
         int resusltadoObtenido= ReadFiles.muestraContenido("phy",ruta);
         assertEquals(resultadoEsperado,resusltadoObtenido);
     }
@@ -34,8 +34,8 @@ public class CountLinesTest extends TestCase
      * @throws IOException
      */
     public void testloc() throws IOException {
-        int resultado=7;
-        File ruta = new File("/home/matqui/Documentos/prueba.txt");
+        int resultado=5;
+        File ruta = new File("./src/main/resources/prueba2.txt");
         int obtenido= ReadFiles.muestraContenido("loc",ruta);
         assertEquals(resultado,obtenido);
     }
@@ -47,7 +47,7 @@ public class CountLinesTest extends TestCase
     public void testfilenotfound() throws IOException {
         boolean thrown = false;
         try {
-            File ruta = new File("/home/matqui/Documentos/pruebanotexiste.txt");
+            File ruta = new File("./src/main/resources/pruebanotexiste.txt");
             int resusltado= ReadFiles.muestraContenido("loc",ruta);
         } catch (FileNotFoundException e) {
             thrown = true;
@@ -62,7 +62,7 @@ public class CountLinesTest extends TestCase
     public void testfilefound() throws IOException {
         boolean thrown = true;
         try {
-            File ruta = new File("/home/matqui/Documentos/prueba.txt");
+            File ruta = new File("./src/main/resources/prueba.txt");
             int resultado= ReadFiles.muestraContenido("loc",ruta);
         } catch (FileNotFoundException e) {
             thrown = false;

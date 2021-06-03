@@ -29,7 +29,7 @@ public class ReadFiles {
         }
         else if (tipocontar.equals("loc")){
             while((cadena = b.readLine())!=null) {
-                if (!(cadena.startsWith("/") || (cadena.isEmpty()))){
+                if (!(cadena.startsWith("/") || (cadena.isEmpty()) || (cadena.startsWith("*") ))){
                     contador++;
                 }
             }
