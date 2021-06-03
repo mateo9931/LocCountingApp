@@ -1,4 +1,8 @@
 package edu.escuelaing.arsw.ASE.app;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.io.File;
+
 
 /**
  * Program to count lines in a source code files
@@ -9,13 +13,25 @@ package edu.escuelaing.arsw.ASE.app;
 
 public class CountLines
 {
-    public static void main( String[] args )
-    {
+    /**
+     * Main of CountLines class
+     * @param args
+     */
+    public static void main(String [] args)  {
+        Logger log = LoggerFactory.getLogger(CountLines.class);
         if (args.length!=0 ){
-        String tipocontar = args[0];
-        String nombreArchivo = args[1];
-        System.out.println(tipocontar);
-        System.out.println(nombreArchivo);
+        File nombreArchivo = new File(args[1]);
+        String tipocontar  = args[0];
+        try {
+            int conteo = ReadFiles.muestraContenido(tipocontar, nombreArchivo);
+            if (tipocontar.equals("loc")) {
+                System.out.println("The number of Lines of code are" + conteo);
+            } else {
+                System.out.println("The number of Physical Lines are " + conteo);
+            }
+        }catch(Exception e) {
+            log.error("Error on count lines o file", e);
+        }
     }
     }
 }

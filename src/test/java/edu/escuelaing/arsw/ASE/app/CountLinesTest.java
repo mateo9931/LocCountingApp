@@ -1,14 +1,12 @@
 package edu.escuelaing.arsw.ASE.app;
-
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import java.io.*;
+
 
 /**
- * Unit test for simple App.
+ * Unit test for count lines app
  */
-public class CountLinesTest
-    extends TestCase
+public class CountLinesTest extends TestCase
 {
     /**
      * Create the test case
@@ -21,18 +19,58 @@ public class CountLinesTest
     }
 
     /**
-     * @return the suite of tests being tested
+     * Test counttype PHY
+     * @throws IOException
      */
-    public static Test suite()
-    {
-        return new TestSuite( CountLinesTest.class );
+    public void testphy() throws IOException {
+        int resultadoEsperado=11;
+        File ruta = new File("/home/matqui/Documentos/prueba.txt");
+        int resusltadoObtenido= ReadFiles.muestraContenido("phy",ruta);
+        assertEquals(resultadoEsperado,resusltadoObtenido);
     }
 
     /**
-     * Rigourous Test :-)
+     *Test count type loc
+     * @throws IOException
      */
-    public void testApp()
-    {
-        assertTrue( true );
+    public void testloc() throws IOException {
+        int resultado=7;
+        File ruta = new File("/home/matqui/Documentos/prueba.txt");
+        int obtenido= ReadFiles.muestraContenido("loc",ruta);
+        assertEquals(resultado,obtenido);
     }
+
+    /**
+     *Test count type test file not found
+     * @throws IOException
+     */
+    public void testfilenotfound() throws IOException {
+        boolean thrown = false;
+        try {
+            File ruta = new File("/home/matqui/Documentos/pruebanotexiste.txt");
+            int resusltado= ReadFiles.muestraContenido("loc",ruta);
+        } catch (FileNotFoundException e) {
+            thrown = true;
+        }
+        assertTrue(thrown);
+    }
+
+    /**
+     *Test count type test file found
+     * @throws IOException
+     */
+    public void testfilefound() throws IOException {
+        boolean thrown = true;
+        try {
+            File ruta = new File("/home/matqui/Documentos/prueba.txt");
+            int resultado= ReadFiles.muestraContenido("loc",ruta);
+        } catch (FileNotFoundException e) {
+            thrown = false;
+        }
+        assertTrue(thrown);
+    }
+
+
+
+
 }
